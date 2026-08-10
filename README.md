@@ -124,16 +124,39 @@ build step too, which makes plain `npm install` skip `devDependencies` like
 
 ### A note on photos
 
-Attendee photos live as static files in `client/public/images/` and are
-built into the deployed app (not stored in Postgres — only the file *path*
-is). To add someone with a new photo once the site is live: add the image
-file to `client/public/images/...`, commit, push, and redeploy; then use
-`/admin.html` to add their record pointing at that path.
+There are two ways a photo ends up on an attendee's card:
 
-Also worth knowing: filenames are case-sensitive on Render's Linux servers
-even though they're forgiving on a Mac. Keep the `image` path in
-`people_data.json` (or entered via `/admin.html`) matching the actual
-filename's capitalization exactly.
+1. **Original 158 attendees** — photos live as static files in
+   `client/public/images/` and are built into the deployed app (not stored
+   in Postgres — only the file *path* string is). Adding a photo this way
+   means adding the file to `client/public/images/...`, committing, pushing,
+   and redeploying. Filenames are case-sensitive on Render's Linux servers
+   even though they're forgiving on a Mac — keep the `image` path matching
+   the actual filename's capitalization exactly.
+
+2. **New attendees added via `/admin.html`** — use the "Upload a photo"
+   file input instead. It uploads directly to Cloudinary and fills in the
+   `image` field with the resulting URL automatically, no git commit or
+   redeploy needed — it's live the moment you save the attendee. Requires
+   `CLOUDINARY_URL` to be configured (see setup below).
+
+### Setting up Cloudinary (for instant photo uploads)
+
+1. Create a free account at [cloudinary.com](https://cloudinary.com).
+2. On your Cloudinary dashboard, find the **API Environment variable** —
+   it's a single string in the form
+   `cloudinary://<api_key>:<api_secret>@<cloud_name>`.
+3. Set it as `CLOUDINARY_URL`:
+   - Locally: add it to your `.env` file.
+   - On Render: add it as an environment variable named `CLOUDINARY_URL` on
+     the web service (it's already declared with `sync: false` in
+     `render.yaml`, so Render will prompt you for it on the Blueprint's
+     first deploy, or you can add it manually under **Environment**).
+4. Uploaded photos land in a `usc-emba-tailgate` folder in your Cloudinary
+   media library, if you ever want to browse or clean them up there.
+
+Free Cloudinary tier is generous (25 GB storage / 25 GB bandwidth per
+month) — plenty for a few hundred profile photos.
 
 ## 3. API reference
 
@@ -143,4 +166,5 @@ filename's capitalization exactly.
 | POST   | `/api/attendees`      | `x-admin-password`| Add an attendee                     |
 | PUT    | `/api/attendees/:id`  | `x-admin-password`| Edit an attendee                    |
 | DELETE | `/api/attendees/:id`  | `x-admin-password`| Remove an attendee                  |
+| POST   | `/api/upload-image`   | `x-admin-password`| Upload a photo to Cloudinary, returns its URL |
 | GET    | `/api/health`         | none              | Health check                        |

@@ -232,9 +232,17 @@
         <input type="text" id="classInput" list="classSuggestions" placeholder="e.g. LA 42">
         <datalist id="classSuggestions"></datalist>
 
-        <label for="imageInput">Image path</label>
-        <input type="text" id="imageInput" placeholder="e.g. images/42/Jane_Doe.jpeg">
-        <p class="disabled-note">The image file itself must already exist in <code>client/public/images/</code> in the repo (and be deployed) &mdash; this field just points to it. Leave blank to use the default placeholder photo.</p>
+        <label for="imageInput">Image path / URL</label>
+        <input type="text" id="imageInput" placeholder="e.g. images/42/Jane_Doe.jpeg or a Cloudinary URL">
+
+        <label for="imageFileInput">Or upload a photo</label>
+        <input type="file" id="imageFileInput" accept="image/*">
+        <button class="btn btn-secondary" id="uploadBtn" type="button" style="margin-top: 0.75em;">Upload Photo</button>
+        <div id="uploadStatus" class="status hidden"></div>
+        <div id="imagePreviewWrap" style="display:none; margin-top: 1em;">
+            <img id="imagePreview" src="" alt="Preview" style="max-width: 140px; border-radius: 4px; box-shadow: 0 0 0.5em rgba(0,0,0,.2);">
+        </div>
+        <p class="disabled-note">Uploading a photo saves it to Cloudinary and fills in the field above automatically &mdash; it goes live instantly, no redeploy needed. Leave both blank to use the default placeholder photo.</p>
 
         <div class="checkbox-row">
             <input type="checkbox" id="committeeInput">
@@ -270,6 +278,11 @@
     const industryInput = document.getElementById('industryInput');
     const classInput = document.getElementById('classInput');
     const imageInput = document.getElementById('imageInput');
+    const imageFileInput = document.getElementById('imageFileInput');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const uploadStatus = document.getElementById('uploadStatus');
+    const imagePreviewWrap = document.getElementById('imagePreviewWrap');
+    const imagePreview = document.getElementById('imagePreview');
     const committeeInput = document.getElementById('committeeInput');
     const saveBtn = document.getElementById('saveBtn');
     const cancelEditBtn = document.getElementById('cancelEditBtn');
@@ -307,6 +320,16 @@
         });
     }
 
+    function showPreview(url) {
+        if (!url) {
+            imagePreviewWrap.style.display = 'none';
+            imagePreview.src = '';
+            return;
+        }
+        imagePreview.src = url;
+        imagePreviewWrap.style.display = 'block';
+    }
+
     function resetForm() {
         editingId = null;
         nameInput.value = '';
@@ -315,6 +338,9 @@
         classInput.value = '';
         imageInput.value = '';
         committeeInput.checked = false;
+        imageFileInput.value = '';
+        hideStatus(uploadStatus);
+        showPreview(null);
         saveBtn.textContent = 'Add Attendee';
         formModeLabel.textContent = 'Add';
         formModeTitle.textContent = 'New attendee';
@@ -331,6 +357,9 @@
         classInput.value = person.class || '';
         imageInput.value = person.image || '';
         committeeInput.checked = Boolean(person.committee);
+        imageFileInput.value = '';
+        hideStatus(uploadStatus);
+        showPreview(person.image ? resolveImageUrl(person.image) : null);
         saveBtn.textContent = 'Save Changes';
         formModeLabel.textContent = 'Edit';
         formModeTitle.textContent = person.name;
@@ -340,6 +369,13 @@
         hideStatus(formStatus);
         nameInput.focus();
         window.scrollTo({ top: nameInput.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+    }
+
+    // Existing attendees may have either a relative repo path
+    // ("images/42/x.jpg") or a full Cloudinary URL — both work as <img src>
+    // directly, so this just passes the value through.
+    function resolveImageUrl(image) {
+        return image;
     }
 
     function renderTable() {
@@ -475,6 +511,40 @@
             showStatus(formStatus, err.message || 'Something went wrong.', 'error');
         } finally {
             saveBtn.disabled = false;
+        }
+    });
+
+    uploadBtn.addEventListener('click', async () => {
+        const file = imageFileInput.files[0];
+        if (!file) {
+            showStatus(uploadStatus, 'Choose an image file first.', 'error');
+            return;
+        }
+        const password = getAdminPassword();
+        if (!password) return;
+
+        const formData = new FormData();
+        formData.append('image', file);
+
+        uploadBtn.disabled = true;
+        uploadBtn.textContent = 'Uploading…';
+        try {
+            const res = await fetch('/api/upload-image', {
+                method: 'POST',
+                headers: { 'x-admin-password': password },
+                body: formData,
+            });
+            const body = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`);
+
+            imageInput.value = body.url;
+            showPreview(body.url);
+            showStatus(uploadStatus, 'Uploaded — image path filled in above.', 'success');
+        } catch (err) {
+            showStatus(uploadStatus, err.message || 'Upload failed.', 'error');
+        } finally {
+            uploadBtn.disabled = false;
+            uploadBtn.textContent = 'Upload Photo';
         }
     });
 
