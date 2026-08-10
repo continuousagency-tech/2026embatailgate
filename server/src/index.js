@@ -1,5 +1,8 @@
-require('dotenv').config();
 const path = require('path');
+// npm runs this script with cwd set to server/ (because of the -w server
+// workspace flag), so the default dotenv lookup would miss the .env file
+// that lives at the project root. Point it there explicitly.
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 const express = require('express');
 const cors = require('cors');
 const attendeesRouter = require('./routes/attendees');
