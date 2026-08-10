@@ -152,6 +152,22 @@
             font-size: 0.7rem;
             letter-spacing: 0.03em;
         }
+        th.sortable {
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        th.sortable:hover {
+            color: #7a0000;
+        }
+        th.sortable .sort-arrow {
+            display: inline-block;
+            margin-left: 4px;
+            opacity: 0.35;
+        }
+        th.sortable.active .sort-arrow {
+            opacity: 1;
+        }
         .action-btn {
             background: none;
             border: 1px solid #990000;
@@ -271,6 +287,55 @@
 
     let attendees = [];
     let editingId = null; // null = add mode, otherwise id of attendee being edited
+    let sortState = { column: 'class', direction: 'asc' }; // default: ordered by Class
+
+    const COLUMNS = [
+        { key: 'name', label: 'Name' },
+        { key: 'class', label: 'Class' },
+        { key: 'profession', label: 'Title/Company' },
+        { key: 'industry', label: 'Industry' },
+        { key: 'committee', label: 'Committee' },
+    ];
+
+    // Natural sort for class labels like "LA 3", "LA 28", "SD 2", "MBA 2025"
+    // — same logic as the main site, so "Class" ordering matches what
+    // visitors see, not plain alphabetical (which would put "LA 10" before
+    // "LA 2").
+    function classSortKey(label) {
+        const match = String(label || '').match(/^(.*?)(\d+)\s*$/);
+        if (match) {
+            return [match[1].trim(), parseInt(match[2], 10)];
+        }
+        return [String(label || ''), 0];
+    }
+
+    function compareAttendees(a, b, column) {
+        let result;
+        if (column === 'class') {
+            const [aPrefix, aNum] = classSortKey(a.class);
+            const [bPrefix, bNum] = classSortKey(b.class);
+            result = aPrefix.localeCompare(bPrefix) || (aNum - bNum);
+        } else if (column === 'committee') {
+            result = Number(Boolean(a.committee)) - Number(Boolean(b.committee));
+        } else {
+            result = String(a[column] || '').localeCompare(String(b[column] || ''));
+        }
+        return result;
+    }
+
+    function getSortedAttendees() {
+        const sorted = [...attendees].sort((a, b) => compareAttendees(a, b, sortState.column));
+        return sortState.direction === 'desc' ? sorted.reverse() : sorted;
+    }
+
+    function setSort(column) {
+        if (sortState.column === column) {
+            sortState.direction = sortState.direction === 'asc' ? 'desc' : 'asc';
+        } else {
+            sortState = { column, direction: 'asc' };
+        }
+        renderTable();
+    }
 
     const adminPasswordInput = document.getElementById('adminPassword');
     const nameInput = document.getElementById('nameInput');
@@ -387,22 +452,33 @@
         }
 
         const table = document.createElement('table');
-        table.innerHTML = `
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Class</th>
-                    <th>Title/Company</th>
-                    <th>Industry</th>
-                    <th>Committee</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        `;
-        const tbody = table.querySelector('tbody');
+        const thead = document.createElement('thead');
+        const headRow = document.createElement('tr');
 
-        attendees.forEach(person => {
+        COLUMNS.forEach(col => {
+            const th = document.createElement('th');
+            th.className = 'sortable';
+            th.textContent = col.label;
+
+            const arrow = document.createElement('span');
+            arrow.className = 'sort-arrow';
+            const isActive = sortState.column === col.key;
+            if (isActive) th.classList.add('active');
+            arrow.textContent = isActive ? (sortState.direction === 'asc' ? '▲' : '▼') : '▲▼';
+            th.appendChild(arrow);
+
+            th.addEventListener('click', () => setSort(col.key));
+            headRow.appendChild(th);
+        });
+        headRow.appendChild(document.createElement('th')); // actions column, unsortable
+
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+
+        getSortedAttendees().forEach(person => {
             const row = document.createElement('tr');
 
             const nameTd = document.createElement('td');
