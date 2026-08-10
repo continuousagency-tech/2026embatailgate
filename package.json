@@ -1,0 +1,30 @@
+{
+  "name": "usc-emba-tailgate",
+  "private": true,
+  "version": "1.0.0",
+  "description": "USC EMBA Tailgate attendee directory — React + Express + Postgres",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev:server\" \"npm run dev:client\"",
+    "build": "npm run build -w client",
+    "start": "npm run start -w server",
+    "db:schema": "node db/run-schema.js",
+    "db:seed": "node db/seed.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,21 @@
+# Local Postgres only — connect to it with your existing pgAdmin4 app (no
+# pgAdmin container here). See README.md for connection steps.
+
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: tailgate-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: tailgate
+      POSTGRES_PASSWORD: tailgate
+      POSTGRES_DB: tailgate
+    ports:
+      - "5432:5432"
+    volumes:
+      - tailgate-pgdata:/var/lib/postgresql/data
+
+volumes:
+  tailgate-pgdata:

@@ -1,0 +1,1266 @@
+[
+  {
+    "name": "Florian Limjoco",
+    "profession": "Sr. Dir, International Bus Dev, DZYNE Technologies",
+    "industry": "Aerospace & Defense",
+    "class": "SD 2",
+    "committee": false,
+    "image": "images/SD/Florian_Limjoo.jpeg"
+  },
+  {
+    "name": "Christopher Barry",
+    "profession": "Sr. Strategic Solutions Manager, FedEx Services",
+    "industry": "Transportation & Logistics",
+    "class": "LA 3",
+    "committee": false,
+    "image": "images/3/Christopher_Barry.jpeg"
+  },
+  {
+    "name": "Charles Prescott",
+    "profession": "President, Prescott Properties",
+    "industry": "Real Estate",
+    "class": "LA 7",
+    "committee": false,
+    "image": "images/7/Chuck_Prescott.jpeg"
+  },
+  {
+    "name": "Christopher Rubio",
+    "profession": "Commercial Real Estate Advisor, eXp Commercial",
+    "industry": "Real Estate",
+    "class": "LA 28",
+    "committee": false,
+    "image": "images/28/28_chris_rubio.jpg"
+  },
+  {
+    "name": "Erik Daniels",
+    "profession": "Senior Vice President, U.S. Bank",
+    "industry": "Banking & Finance",
+    "class": "LA 31",
+    "committee": false,
+    "image": "images/31/Erik_Daniels.jpeg"
+  },
+  {
+    "name": "Andrew Saul",
+    "profession": "Sr. Vice President, Production Finance, Sony Pictures Entertainment",
+    "industry": "Entertainment & Media",
+    "class": "LA 31",
+    "committee": false,
+    "image": "images/31/Andrew_Saul.jpeg"
+  },
+  {
+    "name": "James Vasquez",
+    "profession": "Associate Dean, Operations and Strategy, USC Annenberg School Adjunct Professor",
+    "industry": "Education",
+    "class": "LA 31",
+    "committee": true,
+    "image": "images/31/31_James_Vasquez.jpeg"
+  },
+  {
+    "name": "Paul Asmar",
+    "profession": "Vice President, Customer Success, Synadia",
+    "industry": "Technology",
+    "class": "LA 32",
+    "committee": false,
+    "image": "images/32/Paul_Asmar.jpeg"
+  },
+  {
+    "name": "Becky Garnett",
+    "profession": "Global Strategic Account Manager, Convergint",
+    "industry": "Technology",
+    "class": "LA 32",
+    "committee": false,
+    "image": "images/32/Becky_Garnett.jpeg"
+  },
+  {
+    "name": "Sara Ishag",
+    "profession": "Director, Investor Relations, WallStreet Research",
+    "industry": "Banking & Finance",
+    "class": "LA 32",
+    "committee": false,
+    "image": "images/mba/Sara_Ishag.jpeg"
+  },
+  {
+    "name": "Mo Orchewa",
+    "profession": "Head of Finance, Ozlo Sleep",
+    "industry": "Consumer Goods & Retail",
+    "class": "LA 32",
+    "committee": false,
+    "image": "images/32/32_mo_orchewa.jpeg"
+  },
+  {
+    "name": "Shiva Sattar",
+    "profession": "Managing Director, JPMorgan Chase",
+    "industry": "Banking & Finance",
+    "class": "LA 32",
+    "committee": false,
+    "image": "images/32/Shiva_Sattar.jpeg"
+  },
+  {
+    "name": "Barbara Hellwig Sladeck, SPHR",
+    "profession": "Human Capital Leader Driving Strategic Business Results",
+    "industry": "Unspecified",
+    "class": "LA 32",
+    "committee": true,
+    "image": "images/32/32_barbara.jpeg"
+  },
+  {
+    "name": "Arnold Suwarnasarn, Ph.D",
+    "profession": "Life Sciences Data, Innovation, & Strategy",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 32",
+    "committee": false,
+    "image": "images/32/arnold_suwarnasarn.jpeg"
+  },
+  {
+    "name": "Marbelio Villatoro",
+    "profession": "Director of Finance, RTX",
+    "industry": "Aerospace & Defense",
+    "class": "LA 32",
+    "committee": false,
+    "image": "images/32/Marbelio_Villatoro.jpeg"
+  },
+  {
+    "name": "Sharon Wang",
+    "profession": "Consulting",
+    "industry": "Consulting & Professional Services",
+    "class": "LA 32",
+    "committee": true,
+    "image": "images/32/32_sharon_wang.jpg"
+  },
+  {
+    "name": "Helen Chu-Suwarnasarn, CFA, CFP, CPWA",
+    "profession": "Wealth Management",
+    "industry": "Banking & Finance",
+    "class": "LA 33",
+    "committee": false,
+    "image": "images/33/helen_chu.jpeg"
+  },
+  {
+    "name": "Gail Gonzales",
+    "profession": "Art Director/Designer, Abbvie",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 33",
+    "committee": true,
+    "image": "images/33/33_gail_headshot_gradient.jpg"
+  },
+  {
+    "name": "Becky Kong",
+    "profession": "VP, Finance & Accounting, Perelel",
+    "industry": "Consumer Goods & Retail",
+    "class": "LA 33",
+    "committee": false,
+    "image": "images/33/33_becky_kong.jpeg"
+  },
+  {
+    "name": "Karla Morales, CPA",
+    "profession": "Founder, Abundant Tax Strategies, Inc.",
+    "industry": "Consulting & Professional Services",
+    "class": "LA 33",
+    "committee": true,
+    "image": "images/33/33_karla.jpeg"
+  },
+  {
+    "name": "Andrew Pagsisihan",
+    "profession": "COO, AllCare Provider",
+    "industry": "Healthcare",
+    "class": "LA 33",
+    "committee": true,
+    "image": "images/33/Andrew_Pagsisihan.jpeg"
+  },
+  {
+    "name": "Rob Simons",
+    "profession": "Principal, Automotive Consulting Services",
+    "industry": "Automotive",
+    "class": "LA 33",
+    "committee": false,
+    "image": "images/33/33_rob_simons.jpeg"
+  },
+  {
+    "name": "Carol Styx",
+    "profession": "Director, Sourcing & Procurement, The Walt Disney Company",
+    "industry": "Entertainment & Media",
+    "class": "LA 33",
+    "committee": false,
+    "image": "images/33/33_carol.jpg"
+  },
+  {
+    "name": "Averre Bailey",
+    "profession": "Senior Finance Manager, Emerald Expositions",
+    "industry": "Entertainment & Media",
+    "class": "LA 34",
+    "committee": false,
+    "image": "images/profile.jpg"
+  },
+  {
+    "name": "Melissa Browne",
+    "profession": "SVP, Enterprise PMO, Columbia Bank",
+    "industry": "Banking & Finance",
+    "class": "LA 34",
+    "committee": true,
+    "image": "images/34/melissa_browne.jpeg"
+  },
+  {
+    "name": "Michael Salman",
+    "profession": "Co-Founder/COO, Cali FoodStar, Inc",
+    "industry": "Food & Beverage",
+    "class": "LA 34",
+    "committee": false,
+    "image": "images/34/michael_salman.jpeg"
+  },
+  {
+    "name": "Julian Tang",
+    "profession": "COO, Innovation Office, BlackRock",
+    "industry": "Banking & Finance",
+    "class": "LA 34",
+    "committee": false,
+    "image": "images/34/34_julian_tang.jpeg"
+  },
+  {
+    "name": "Greg Tennyson",
+    "profession": "VP, Technology Services, MRC Smart Technology Solutions",
+    "industry": "Technology",
+    "class": "LA 34",
+    "committee": false,
+    "image": "images/34/Gregory_Tennyson.jpeg"
+  },
+  {
+    "name": "Ben Wells",
+    "profession": "Acting Creative Director, Disney General Entertainment Content",
+    "industry": "Entertainment & Media",
+    "class": "LA 34",
+    "committee": false,
+    "image": "images/34/34_Ben_Wells.jpeg"
+  },
+  {
+    "name": "Attis Bouillon",
+    "profession": "AI Partner Activation Manager, Intel Corporation",
+    "industry": "Technology",
+    "class": "LA 35",
+    "committee": false,
+    "image": "images/emba/Attis_Bouillon.jpeg"
+  },
+  {
+    "name": "Allison Orchewa",
+    "profession": "Interim Administrative Director, SC CTSI, USC",
+    "industry": "Education",
+    "class": "LA 35",
+    "committee": false,
+    "image": "images/35/Allison_Orechwa.jpeg"
+  },
+  {
+    "name": "Ben Atkinson",
+    "profession": "Vice President & General Manager, Chemring Sensors and Electronic Systems",
+    "industry": "Aerospace & Defense",
+    "class": "LA 36",
+    "committee": false,
+    "image": "images/36/Ben_Atkinson.jpeg"
+  },
+  {
+    "name": "Stephen Jaggard",
+    "profession": "Sr Account Executive: Business Transformation , SAP",
+    "industry": "Technology",
+    "class": "LA 36",
+    "committee": false,
+    "image": "images/36/36_Stephen_Jaggard.jpeg"
+  },
+  {
+    "name": "Natalie Keller",
+    "profession": "Principal, Altera Brokers",
+    "industry": "Insurance",
+    "class": "LA 36",
+    "committee": false,
+    "image": "images/36/36_natalie_keller.jpeg"
+  },
+  {
+    "name": "Leo Kopsombut",
+    "profession": "Senior Manager in Space Integration and Test, Boeing",
+    "industry": "Aerospace & Defense",
+    "class": "LA 36",
+    "committee": true,
+    "image": "images/36/36_leo.jpg"
+  },
+  {
+    "name": "Robert Long",
+    "profession": "NA Life Science Software - Enterprise Partner, Emerson",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 36",
+    "committee": false,
+    "image": "images/36/36_Robert_Long.jpeg"
+  },
+  {
+    "name": "Doug Lu-Hill",
+    "profession": "Healthcare, Finance, Real Estate & Tech Product Management",
+    "industry": "Unspecified",
+    "class": "LA 36",
+    "committee": false,
+    "image": "images/36/36_Doug_Hill.png"
+  },
+  {
+    "name": "Abiola Olowokere",
+    "profession": "Program Management Scholar Big Data and AI enthusiast",
+    "industry": "Unspecified",
+    "class": "LA 36",
+    "committee": false,
+    "image": "images/36/Abiola_Olowokere.jpeg"
+  },
+  {
+    "name": "Patrick Speer",
+    "profession": "VP, Medicare, Alignment Health",
+    "industry": "Healthcare",
+    "class": "LA 36",
+    "committee": false,
+    "image": "images/36/Patrick_Speer.jpeg"
+  },
+  {
+    "name": "Jasmine Arora",
+    "profession": "Mental Health Clinician/Senior Program Manager, Los Angeles Metro",
+    "industry": "Government & Public Sector",
+    "class": "LA 37",
+    "committee": false,
+    "image": "images/37/37_Jasmine_Aurora.jpeg"
+  },
+  {
+    "name": "Kelley Bernal",
+    "profession": "Executive Vice President, Arrowhead General Insurance Agency",
+    "industry": "Insurance",
+    "class": "LA 37",
+    "committee": false,
+    "image": "images/37/37_Kelly_Bernal.jpeg"
+  },
+  {
+    "name": "Helena Curtis",
+    "profession": "Executive Director, Talent, Learning, & OD, University of Southern California",
+    "industry": "Education",
+    "class": "LA 37",
+    "committee": false,
+    "image": "images/37/Helena_Curtis.jpeg"
+  },
+  {
+    "name": "Acacia Reed",
+    "profession": "COO, L.A. Care Health Plan",
+    "industry": "Healthcare",
+    "class": "LA 37",
+    "committee": false,
+    "image": "images/38/38_acacia_reed.jpeg"
+  },
+  {
+    "name": "Meg Simons",
+    "profession": "Adjunct Professor, USC Marshall School of Business",
+    "industry": "Education",
+    "class": "LA 37",
+    "committee": false,
+    "image": "images/37/Meg_Simons.jpeg"
+  },
+  {
+    "name": "Alexis Vasquez",
+    "profession": "Director of Strategy, Dassault Systèmes",
+    "industry": "Technology",
+    "class": "LA 37",
+    "committee": false,
+    "image": "images/mba/Alexis_Vasquez.jpeg"
+  },
+  {
+    "name": "LaMarr Collins",
+    "profession": "Electrical Service Representative, Los Angeles Department of Water and Power",
+    "industry": "Energy & Utilities",
+    "class": "LA 38",
+    "committee": false,
+    "image": "images/38/38_lamar_collins.jpeg"
+  },
+  {
+    "name": "Elliot Ivey",
+    "profession": "Operations Manager, Pathway Capital Management",
+    "industry": "Banking & Finance",
+    "class": "LA 38",
+    "committee": false,
+    "image": "images/38/Elliot_Ivey.jpeg"
+  },
+  {
+    "name": "Fannie Leung",
+    "profession": "AVP, Commercial Real Estate, East West Bank",
+    "industry": "Banking & Finance",
+    "class": "LA 38",
+    "committee": false,
+    "image": "images/38/Fannie_Leung.jpeg"
+  },
+  {
+    "name": "Michelle Angel",
+    "profession": "Director, Corporate FP&A",
+    "industry": "Unspecified",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/39_Michelle_Angel.jpeg"
+  },
+  {
+    "name": "Sevag Bekmezian",
+    "profession": "Principal Manager, Southern California Edison (SCE)",
+    "industry": "Energy & Utilities",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/mba/Sevag_Bekmezian.jpeg"
+  },
+  {
+    "name": "Scott Brody",
+    "profession": "Group Product Manager, Over the Top Marketing",
+    "industry": "Marketing & Advertising",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/39_scott_brody.jpeg"
+  },
+  {
+    "name": "Mark Byers",
+    "profession": "Engineering Manager, Boeing Advanced Concepts",
+    "industry": "Aerospace & Defense",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/39_mark_byers.jpeg"
+  },
+  {
+    "name": "Raymond Chan",
+    "profession": "Global Senior Enterprise Program Manager, Warner Bros. Discovery",
+    "industry": "Entertainment & Media",
+    "class": "LA 39",
+    "committee": true,
+    "image": "images/39/Raymond_Chan.jpeg"
+  },
+  {
+    "name": "Raymond Ho",
+    "profession": "Managing Director, Gala Deluxe",
+    "industry": "Unspecified",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/profile.jpg"
+  },
+  {
+    "name": "Joe Manalastas",
+    "profession": "General Manager, B&B Specialties, Inc",
+    "industry": "Unspecified",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/39_Joe_Mansalatas.jpeg"
+  },
+  {
+    "name": "Brandon Marchy",
+    "profession": "CEO, Orange County Medical Association",
+    "industry": "Healthcare",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/emba/Brandon_Marchy.jpeg"
+  },
+  {
+    "name": "Cory Olson",
+    "profession": "VP of Growth, YouBar Inc.",
+    "industry": "Food & Beverage",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/39_Cory_Olson.jpeg"
+  },
+  {
+    "name": "KunHee Park",
+    "profession": "ICT Policy Advisor, Ministry of Science and ICT",
+    "industry": "Government & Public Sector",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/kunhee_park.jpeg"
+  },
+  {
+    "name": "Kara Proffitt",
+    "profession": "Loan Officer, Walker & Dunlop",
+    "industry": "Real Estate",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/Kara_proffitt.jpeg"
+  },
+  {
+    "name": "Blake Sedgley",
+    "profession": "Sr. Mgr, Proposal and Capture, Anduril Industries",
+    "industry": "Aerospace & Defense",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/39_blake_sedgley.jpeg"
+  },
+  {
+    "name": "Will Shaw, CPA",
+    "profession": "Director of Accounting, Anduril Industries",
+    "industry": "Aerospace & Defense",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/39_will_shaw.jpeg"
+  },
+  {
+    "name": "Jason Toranto, MD FACS",
+    "profession": "Chairman, Dept of Surgery, La Jolla, Scripps Healthy",
+    "industry": "Healthcare",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/39_jason_toranto.jpeg"
+  },
+  {
+    "name": "Peter Yoo",
+    "profession": "Principal TPM, Amazon",
+    "industry": "Technology",
+    "class": "LA 39",
+    "committee": false,
+    "image": "images/39/39_peter_yoo.jpeg"
+  },
+  {
+    "name": "Allison Ahearn",
+    "profession": "Director National Accounts, BD",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 40",
+    "committee": true,
+    "image": "images/40/40_allison_ahearn.jpeg"
+  },
+  {
+    "name": "Greg Boss",
+    "profession": "National Sales Manager, CRE, HNI Global",
+    "industry": "Real Estate",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/mba/Greg_Boss.jpeg"
+  },
+  {
+    "name": "Ronald Castro",
+    "profession": "Technical Operations Manager, Amazon Web Services",
+    "industry": "Technology",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/40_ron_castro.jpg"
+  },
+  {
+    "name": "Michael Dieffenbach",
+    "profession": "Executive Communications Strategy Project Manager, SoCalGas",
+    "industry": "Energy & Utilities",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/mba/Michael_Dieffenbach.jpeg"
+  },
+  {
+    "name": "John Doyle",
+    "profession": "Project Developer, ENGIE North America",
+    "industry": "Energy & Utilities",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/40_john_doyle.jpeg"
+  },
+  {
+    "name": "Lisa Geng",
+    "profession": "Vice President/ Senior Financial Advisor, Merrill Lynch",
+    "industry": "Banking & Finance",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/40_lisa_geng.jpg"
+  },
+  {
+    "name": "Greg Hurley",
+    "profession": "Senior Vice President, Senior Relationship Manager, KeyBank",
+    "industry": "Banking & Finance",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/emba/Gregory_Hurley.jpeg"
+  },
+  {
+    "name": "Julie Kilpatrick",
+    "profession": "Senior Managing Director, Turner & Townsend",
+    "industry": "Construction & Engineering",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/Julie_Kilpatrick.jpeg"
+  },
+  {
+    "name": "Carly Landig",
+    "profession": "Strategy Consultant, Carly Landig Studio",
+    "industry": "Consulting & Professional Services",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/40_carly_landig.jpeg"
+  },
+  {
+    "name": "Sara (Villalon) Lehmer",
+    "profession": "Associate Vice President, Ares Management Corporation",
+    "industry": "Banking & Finance",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/Sara_Lehmer.jpeg"
+  },
+  {
+    "name": "Emma Meinke",
+    "profession": "Director Product Strategy & Program Management, RxSight, Inc.",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/40_ema_meinke.jpeg"
+  },
+  {
+    "name": "Alexandra Pappas",
+    "profession": "Sales Director, LATAM & US Hispanic, Fifth Season",
+    "industry": "Food & Beverage",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/40_alexandra_pappas.jpeg"
+  },
+  {
+    "name": "Suzy Ramirez",
+    "profession": "Senior Product Development Program Manager, Medtronic",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/mba/Suzy_Ramirez.jpeg"
+  },
+  {
+    "name": "Ashley Saville",
+    "profession": "Chief Revenue Officer, Top Line Growth Partners",
+    "industry": "Consulting & Professional Services",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/40_ashley_saville.jpeg"
+  },
+  {
+    "name": "Jeffrey Tea",
+    "profession": "Director of Investments, Uhon Inc.",
+    "industry": "Unspecified",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/40/Jeffrey_Tea.jpeg"
+  },
+  {
+    "name": "Lauren Thompson",
+    "profession": "Sprinter Sales Director, Mercedes-Benz",
+    "industry": "Automotive",
+    "class": "LA 40",
+    "committee": false,
+    "image": "images/emba/Lauren_Rose_Thompson.jpeg"
+  },
+  {
+    "name": "Christopher Woodland",
+    "profession": "Sr. Manager, Sales Programming and Operations, PwC",
+    "industry": "Consulting & Professional Services",
+    "class": "LA 40",
+    "committee": true,
+    "image": "images/40/40_chris_woodland.jpeg"
+  },
+  {
+    "name": "Chanita Halbert",
+    "profession": "Executive Vice Chair, Vice Chair for Research, and Professor, USC",
+    "industry": "Education",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Chanita_Halbert.jpeg"
+  },
+  {
+    "name": "Roz Aron",
+    "profession": "Learning Business Partner, Sales Excellence, Johnson & Johnson Innovative Medicine",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 41",
+    "committee": true,
+    "image": "images/41/Roz_Aron.jpg"
+  },
+  {
+    "name": "Laura Wilson Bishop",
+    "profession": "Content Aquisition Manager, Amazon Music",
+    "industry": "Entertainment & Media",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/laura-wilson-bishop.jpeg"
+  },
+  {
+    "name": "Paul Blakely",
+    "profession": "Co-Founder & COO, Four Faces",
+    "industry": "Unspecified",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Paul_Blakely.jpeg"
+  },
+  {
+    "name": "Daniel Catlin",
+    "profession": "Senior Scientist, Iridia, Inc",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Daniel_Catlin.jpeg"
+  },
+  {
+    "name": "Ryan Cunningham",
+    "profession": "F-35 Flight Instructor, Lockheed Martin",
+    "industry": "Aerospace & Defense",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Ryan_Cunningham.jpeg"
+  },
+  {
+    "name": "Rajen Duggal",
+    "profession": "Senior Vice President, Paulson Investment Company, LLC",
+    "industry": "Banking & Finance",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Raj_Duggal.jpeg"
+  },
+  {
+    "name": "Sherwood Egbert",
+    "profession": "Vice President, Shapco Inc.",
+    "industry": "Manufacturing & Industrial",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Sherwood_Egbert.jpg"
+  },
+  {
+    "name": "Genesis A. Emery-Foley",
+    "profession": "Founder, CMO, The Blueprint Haus Agency",
+    "industry": "Marketing & Advertising",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/GENESIS_EMERY-FOLEY.jpg"
+  },
+  {
+    "name": "Philip Gegenheimer",
+    "profession": "Senior Financial Analyst,Professional Security Consultants",
+    "industry": "Consulting & Professional Services",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Philip_Gegenheimer.JPG"
+  },
+  {
+    "name": "Brenda Har",
+    "profession": "Assistant Controller, InterDent Service Corporation",
+    "industry": "Healthcare",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Brenda_Har.png"
+  },
+  {
+    "name": "Marc Hansen",
+    "profession": "Contractor, Lukos",
+    "industry": "Aerospace & Defense",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Marc_Hansen.jpeg"
+  },
+  {
+    "name": "Matthew Hennegan",
+    "profession": "Mate, Curtin Maritime",
+    "industry": "Transportation & Logistics",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Matthew_Hennegan.jpg"
+  },
+  {
+    "name": "Ricardo Hernandez",
+    "profession": "General Manager, Bodycote",
+    "industry": "Manufacturing & Industrial",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Rick_Hernandez.jpg"
+  },
+  {
+    "name": "Andrew Johnson",
+    "profession": "Project Accounting Manager, LPA, Inc.",
+    "industry": "Construction & Engineering",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Andrew_Johnson.jpeg"
+  },
+  {
+    "name": "Christopher Jones",
+    "profession": "Digital Marketing Manager, Cedars-Sinai",
+    "industry": "Healthcare",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Chris_Jones.jpeg"
+  },
+  {
+    "name": "Derek Kuntz",
+    "profession": "Sr. Manager Customer Care, QSC",
+    "industry": "Technology",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/derek-kuntz.png"
+  },
+  {
+    "name": "Reyna Castellanos Lopez",
+    "profession": "Lead Engineer, Booz Allen Hamilton",
+    "industry": "Consulting & Professional Services",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Reyna_Castellanos.jpeg"
+  },
+  {
+    "name": "Carter McGuire",
+    "profession": "Executive Petty Officer, U.S. Coast Guard",
+    "industry": "Government & Public Sector",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Carter_McGuire.jpeg"
+  },
+  {
+    "name": "Yves Medrano",
+    "profession": "Retrofit Engineer, Boeing",
+    "industry": "Aerospace & Defense",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Yves_Medrano.jpg"
+  },
+  {
+    "name": "Tanner Mitchell",
+    "profession": "CEO, Elevate Group",
+    "industry": "Unspecified",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Tanner_Mitchell.jpeg"
+  },
+  {
+    "name": "Malike Naibi",
+    "profession": "CEO, Duke 65",
+    "industry": "Unspecified",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Malik_Naibi.jpeg"
+  },
+  {
+    "name": "Matt de la Pena",
+    "profession": "Head of Communications, USC Glorya Kaufman School of Dance",
+    "industry": "Education",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Matt_de_la_Pena.jpeg"
+  },
+  {
+    "name": "Bhagya Sri Pediredla",
+    "profession": "Preconstruction Manager, Exbon Development",
+    "industry": "Construction & Engineering",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Bhagya_Sri_Pediredla.jpeg"
+  },
+  {
+    "name": "Brian Plamondon",
+    "profession": "Territory Account Executive, Schneider Electric",
+    "industry": "Energy & Utilities",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Brian_Plamondon.jpeg"
+  },
+  {
+    "name": "Viorela Pop",
+    "profession": "Senior Medical Science Liaison, Medical Affairs Field Director, GSK/p>",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Viorela_Pop.jpeg"
+  },
+  {
+    "name": "Matthew Porter",
+    "profession": "Operational Finance Manager, Viant Technology",
+    "industry": "Technology",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/matthew_porter.jpeg"
+  },
+  {
+    "name": "Hang Qi",
+    "profession": "Microbiology Laboratory Manager, Michelson Laboratories",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Hang_Qi.jpg"
+  },
+  {
+    "name": "Adriana Qin",
+    "profession": "Electrical Design Engineer, Los Angeles Department of Water and Power",
+    "industry": "Energy & Utilities",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/profile.jpg"
+  },
+  {
+    "name": "Sophia Reyes",
+    "profession": "Board of Talent Member, Mural",
+    "industry": "Technology",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Sophia_Reyes.jpeg"
+  },
+  {
+    "name": "Nati Soffer",
+    "profession": "Senior VP, Asset Manager and Portfolio Manager, Vista Investment Group LLC",
+    "industry": "Real Estate",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Nati_Soffer.jpeg"
+  },
+  {
+    "name": "David Sola",
+    "profession": "Operations Enablement Manager, Presence",
+    "industry": "Technology",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/David_Sola.jpeg"
+  },
+  {
+    "name": "Jae Yu",
+    "profession": "Director of Reservations and Communications, Four Seasons Hotels and Resorts",
+    "industry": "Hospitality & Travel",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Jae_Yu.jpg"
+  },
+  {
+    "name": "Hercules Walker",
+    "profession": "OSr. Group Manager, Product Marketing, Globus Medical",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "LA 41",
+    "committee": false,
+    "image": "images/41/Hercules_Walker.jpg"
+  },
+  {
+    "name": "Andrew Hwang",
+    "profession": "Portfolio Manager, Equity Analyst, Nuveen",
+    "industry": "Banking & Finance",
+    "class": "GEMBA 98",
+    "committee": false,
+    "image": "images/mba/Andrew_Hwang.jpeg"
+  },
+  {
+    "name": "KC Carey",
+    "profession": "SVP, Human Resources, Viant Technology",
+    "industry": "Technology",
+    "class": "MBA 2010",
+    "committee": false,
+    "image": "images/mba/KC_Carey.jpeg"
+  },
+  {
+    "name": "Josie Sandi",
+    "profession": "Sales Professional, Delta Scientific Corporation",
+    "industry": "Manufacturing & Industrial",
+    "class": "MBA 2019",
+    "committee": false,
+    "image": "images/mba/Josie_Sandi.jpeg"
+  },
+  {
+    "name": "Gabriel Torres",
+    "profession": "Zone Sales Director, PepsiCo",
+    "industry": "Food & Beverage",
+    "class": "MBA 2019",
+    "committee": false,
+    "image": "images/mba/Gabriel_Torres.jpeg"
+  },
+  {
+    "name": "Luis Duran",
+    "profession": "SR Global Security Manager, TaylorMade Golf Company",
+    "industry": "Consumer Goods & Retail",
+    "class": "MBA 2020",
+    "committee": false,
+    "image": "images/mba/Luis_Duran.jpeg"
+  },
+  {
+    "name": "Kathleen Manolakas",
+    "profession": "Manager, U.S. Music & Gaming Operations, TikTok",
+    "industry": "Technology",
+    "class": "MBA 2025",
+    "committee": false,
+    "image": "images/mba/Kathleen_Manolakas.jpeg"
+  },
+  {
+    "name": "Alexey Lyutik",
+    "profession": "Lead Program Manager, AbbVie",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "MBA 2025",
+    "committee": false,
+    "image": "images/mba/Alexey_Lyutik.jpeg"
+  },
+  {
+    "name": "Gurvinder Uppal",
+    "profession": "Senior Financial Analyst - FP&A, Ubiquity Retirement + Savings",
+    "industry": "Banking & Finance",
+    "class": "MBA 2026",
+    "committee": false,
+    "image": "images/mba/Gurvinder_Uppal.jpeg"
+  },
+  {
+    "name": "Izzy Pregozen",
+    "profession": "Growth Enablement Analyst, Premise Health",
+    "industry": "Healthcare",
+    "class": "MBA 2026",
+    "committee": false,
+    "image": "images/mba/Isabella_Pregozen.jpeg"
+  },
+  {
+    "name": "Stephen Lenz",
+    "profession": "Workplace Health and Safety Project Manager, Amazon",
+    "industry": "Technology",
+    "class": "MBA 2026",
+    "committee": false,
+    "image": "images/mba/Stephen_Lenz.jpeg"
+  },
+  {
+    "name": "Victoria Chew",
+    "profession": "CMO, Paramount",
+    "industry": "Entertainment & Media",
+    "class": "MAA",
+    "committee": true,
+    "image": "images/maa/maa_vicky_chew.jpeg"
+  },
+  {
+    "name": "Jessica Cheng",
+    "profession": "Senior Marketing and Business Development Manager, GOLFBUDDIES",
+    "industry": "Consumer Goods & Retail",
+    "class": "IBEAR 48",
+    "committee": false,
+    "image": "images/ibear/Jessica_Cheng.jpeg"
+  },
+  {
+    "name": "Hugo Eduardo Del Razo Longoria",
+    "profession": "Founder & CEO, PoseidonX VASP",
+    "industry": "Banking & Finance",
+    "class": "IBEAR 48",
+    "committee": false,
+    "image": "images/profile.jpg"
+  },
+  {
+    "name": "Elin Wang",
+    "profession": "Global Director of Sales, Micas Networks",
+    "industry": "Technology",
+    "class": "IBEAR 48",
+    "committee": true,
+    "image": "images/ibear/ibear48_Elin_Wang.jpeg"
+  },
+  {
+    "name": "André Luiz Freire de Carvalho",
+    "profession": "Large Enterprise Account Director, LinkedIn",
+    "industry": "Technology",
+    "class": "IBEAR 48",
+    "committee": true,
+    "image": "images/ibear/ibear48_André_Kato.jpeg"
+  },
+  {
+    "name": "Jason Cheu",
+    "profession": "Financial Advisor, UBS",
+    "industry": "Banking & Finance",
+    "class": "MBA PM",
+    "committee": false,
+    "image": "images/mba/Jason_Cheu.jpeg"
+  },
+  {
+    "name": "Bob Fredrickson",
+    "profession": "Owner, One Hour Heating & Air Conditioning of Mission Viejo",
+    "industry": "Construction & Engineering",
+    "class": "MBA PM",
+    "committee": false,
+    "image": "images/mba/bob_fredrickson.jpeg"
+  },
+  {
+    "name": "Jonathan Kocsis",
+    "profession": "Chief Financial Officer (Fractional), Willamette Health & Wellness",
+    "industry": "Healthcare",
+    "class": "MBA PM",
+    "committee": false,
+    "image": "images/mba/Jonathan_Kocsis.jpeg"
+  },
+  {
+    "name": "James Kong",
+    "profession": "Assistant Controller,Abbott Vascular",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "MBA PM",
+    "committee": false,
+    "image": "images/mba/James_Kong.jpeg"
+  },
+  {
+    "name": "Damian Marin",
+    "profession": "President, Spyglass Media Group",
+    "industry": "Entertainment & Media",
+    "class": "MBA PM",
+    "committee": false,
+    "image": "images/mba/Damien_Marin.jpeg"
+  },
+  {
+    "name": "Rick Vangrin",
+    "profession": "Regional Vice President of Enterprise Sales- Southwest, Datadog",
+    "industry": "Technology",
+    "class": "MBA PM",
+    "committee": false,
+    "image": "images/mba/Rick_Vangrin.jpeg"
+  },
+  {
+    "name": "Pat Kilkison",
+    "profession": "Managing Partner, Integrity Partners",
+    "industry": "Consulting & Professional Services",
+    "class": "MBA PM",
+    "committee": false,
+    "image": "images/mba/Pat_Wilkison.jpeg"
+  },
+  {
+    "name": "Marissa Aguilera",
+    "profession": "Social Media Manager, Celestial Social Advertising Services",
+    "industry": "Marketing & Advertising",
+    "class": "OMBA 19",
+    "committee": false,
+    "image": "images/mba/Marissa_Aguilera.jpeg"
+  },
+  {
+    "name": "Brianna Buenabad",
+    "profession": "Marketing Specialist, JCB North America",
+    "industry": "Manufacturing & Industrial",
+    "class": "OMBA 19",
+    "committee": false,
+    "image": "images/mba/Brianna_Buenabad.jpeg"
+  },
+  {
+    "name": "Alexander Guizar",
+    "profession": "Mission Assurance Manager, Terran Orbital Corporation",
+    "industry": "Aerospace & Defense",
+    "class": "OMBA 19",
+    "committee": false,
+    "image": "images/mba/Alexander_Guizar.jpeg"
+  },
+  {
+    "name": "Julia Matthews",
+    "profession": "Coordinator, Partnership Marketing, Ultimate Fighting Championship",
+    "industry": "Entertainment & Media",
+    "class": "OMBA 19",
+    "committee": false,
+    "image": "images/mba/Julia_Matthews.jpeg"
+  },
+  {
+    "name": "Alexander Mehta",
+    "profession": "Senior Pharmaceutical Sales Representative, Merck",
+    "industry": "Life Sciences & Pharmaceuticals",
+    "class": "OMBA 19",
+    "committee": false,
+    "image": "images/mba/Alexander_Mehta.jpeg"
+  },
+  {
+    "name": "Yousif Nashif",
+    "profession": "Business Development, Motivo",
+    "industry": "Healthcare",
+    "class": "OMBA 19",
+    "committee": false,
+    "image": "images/mba/Yousif_Nashif.jpeg"
+  },
+  {
+    "name": "Jiji Khasru",
+    "profession": "Partner & Joint Executive Chef, Richard Friedman Catering",
+    "industry": "Food & Beverage",
+    "class": "OMBA 20",
+    "committee": false,
+    "image": "images/mba/Jiji_Khasru.jpeg"
+  },
+  {
+    "name": "Chris Bresnahan",
+    "profession": "Founding Director, Hayes Barnard Sustainability Fellowship, USC Marshall School of Business",
+    "industry": "Education",
+    "class": "USC",
+    "committee": false,
+    "image": "images/usc/usc_chris_b.jpeg"
+  },
+  {
+    "name": "Gretchen D'Auria",
+    "profession": "Special Project/Marketing Manager, USC",
+    "industry": "Education",
+    "class": "USC",
+    "committee": false,
+    "image": "images/40/40_gretchen_DAuria.jpeg"
+  },
+  {
+    "name": "Debra Ono",
+    "profession": "Associate Director, Executive MBA Program at USC Marshall School of Business",
+    "industry": "Education",
+    "class": "USC",
+    "committee": false,
+    "image": "images/usc/USC_debra_ono.jpeg"
+  },
+  {
+    "name": "Greg Patton",
+    "profession": "Professor, USC Marshall",
+    "industry": "Education",
+    "class": "USC",
+    "committee": false,
+    "image": "images/17/Greg_Patton.jpeg"
+  },
+  {
+    "name": "Awni Tajiki",
+    "profession": "Executive Assistant to Managing Director, General Catalyst",
+    "industry": "Banking & Finance",
+    "class": "USC",
+    "committee": false,
+    "image": "images/40/Awni_Tajiki.jpeg"
+  },
+  {
+    "name": "Michael Chien",
+    "profession": "Equities Trader, Hold Brothers On-line Investment Services",
+    "industry": "Banking & Finance",
+    "class": "Unspecified",
+    "committee": false,
+    "image": "images/profile.jpg"
+  },
+  {
+    "name": "Jae Brattain",
+    "profession": "Insurance Agent, Absolute Bonding Corporation",
+    "industry": "Insurance",
+    "class": "Unspecified",
+    "committee": false,
+    "image": "images/mba/Jae_Brattain.jpeg"
+  },
+  {
+    "name": "Christopher Do",
+    "profession": "Sr. Financial Analyst, San Diego Community Power",
+    "industry": "Energy & Utilities",
+    "class": "Unspecified",
+    "committee": false,
+    "image": "images/mba/Christopher_Do.jpeg"
+  },
+  {
+    "name": "Leigh Langman",
+    "profession": "Director Business Development, CGS Business Solutions",
+    "industry": "Consulting & Professional Services",
+    "class": "Unspecified",
+    "committee": false,
+    "image": "images/mba/Leigh_Langman.jpeg"
+  },
+  {
+    "name": "Javier Lopez",
+    "profession": "Not specified",
+    "industry": "Unspecified",
+    "class": "Unspecified",
+    "committee": false,
+    "image": "images/profile.jpg"
+  },
+  {
+    "name": "Raphael Tecucianu",
+    "profession": "Co-Founder & Manager, Midas Art Capital",
+    "industry": "Banking & Finance",
+    "class": "Unspecified",
+    "committee": false,
+    "image": "images/mba/Raphael_Tecucianu.jpeg"
+  },
+  {
+    "name": "James Tubbs",
+    "profession": "Electrical/Mechanical Design Engineer, ASSA Abloy Entrance Systems",
+    "industry": "Manufacturing & Industrial",
+    "class": "Unspecified",
+    "committee": false,
+    "image": "images/40/James_Tubbs.jpeg"
+  },
+  {
+    "name": "Shohei Ohtani",
+    "profession": "Pitcher/Hitter, Los Angeles Dodgers",
+    "industry": "Baseball",
+    "class": "LA 42",
+    "committee": true,
+    "image": "images/42/shohei_ohtani.jpg"
+  },
+  {
+    "name": "Freddie Freeman",
+    "profession": "hitter, Los Angeles Dodgers",
+    "industry": "Baseball",
+    "class": "LA 42",
+    "committee": true,
+    "image": "images/42/freddie_freeman.jpg"
+  },
+  {
+    "name": "Dave Roberts",
+    "profession": "Manager, Los Angeles Dodgers",
+    "industry": "Baseball",
+    "class": "LA 42",
+    "committee": true,
+    "image": "images/42/dave_roberts.jpg"
+  }
+]
