@@ -295,6 +295,7 @@
         { key: 'profession', label: 'Title/Company' },
         { key: 'industry', label: 'Industry' },
         { key: 'committee', label: 'Committee' },
+        { key: 'created_at', label: 'Created' },
     ];
 
     // Natural sort for class labels like "LA 3", "LA 28", "SD 2", "MBA 2025"
@@ -317,6 +318,8 @@
             result = aPrefix.localeCompare(bPrefix) || (aNum - bNum);
         } else if (column === 'committee') {
             result = Number(Boolean(a.committee)) - Number(Boolean(b.committee));
+        } else if (column === 'created_at') {
+            result = new Date(a.created_at || 0) - new Date(b.created_at || 0);
         } else {
             result = String(a[column] || '').localeCompare(String(b[column] || ''));
         }
@@ -436,6 +439,13 @@
         window.scrollTo({ top: nameInput.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
     }
 
+    function formatCreatedAt(value) {
+        if (!value) return '';
+        const d = new Date(value);
+        if (Number.isNaN(d.getTime())) return '';
+        return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
     // Existing attendees may have either a relative repo path
     // ("images/42/x.jpg") or a full Cloudinary URL — both work as <img src>
     // directly, so this just passes the value through.
@@ -500,6 +510,10 @@
             const committeeTd = document.createElement('td');
             committeeTd.textContent = person.committee ? 'Yes' : '';
             row.appendChild(committeeTd);
+
+            const createdTd = document.createElement('td');
+            createdTd.textContent = formatCreatedAt(person.created_at);
+            row.appendChild(createdTd);
 
             const actionTd = document.createElement('td');
 

@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const result = await pool.query(
-      'SELECT id, name, profession, industry, class, committee, image FROM attendees ORDER BY id ASC'
+      'SELECT id, name, profession, industry, class, committee, image, created_at FROM attendees ORDER BY id ASC'
     );
     res.json(result.rows);
   } catch (err) {
@@ -30,7 +30,7 @@ router.post('/', adminAuth, async (req, res) => {
     const result = await pool.query(
       `INSERT INTO attendees (name, profession, industry, class, committee, image)
        VALUES ($1, $2, $3, $4, $5, $6)
-       RETURNING id, name, profession, industry, class, committee, image`,
+       RETURNING id, name, profession, industry, class, committee, image, created_at`,
       [
         String(name).trim(),
         (profession && String(profession).trim()) || 'Not specified',
@@ -61,7 +61,7 @@ router.put('/:id', adminAuth, async (req, res) => {
       `UPDATE attendees
        SET name = $1, profession = $2, industry = $3, class = $4, committee = $5, image = $6
        WHERE id = $7
-       RETURNING id, name, profession, industry, class, committee, image`,
+       RETURNING id, name, profession, industry, class, committee, image, created_at`,
       [
         String(name).trim(),
         (profession && String(profession).trim()) || 'Not specified',
