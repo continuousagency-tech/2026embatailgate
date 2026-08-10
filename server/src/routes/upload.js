@@ -35,7 +35,10 @@ router.post('/', adminAuth, upload.single('image'), (req, res) => {
     (err, result) => {
       if (err) {
         console.error('Cloudinary upload failed:', err);
-        return res.status(500).json({ error: 'Upload to Cloudinary failed.' });
+        // Surface the real reason (bad credentials, invalid cloud_name, etc.)
+        // instead of a generic message — this is an admin-only endpoint, so
+        // it's safe to show the detail directly in the response.
+        return res.status(500).json({ error: 'Upload to Cloudinary failed: ' + (err.message || 'unknown error') });
       }
       res.status(201).json({ url: result.secure_url });
     }
