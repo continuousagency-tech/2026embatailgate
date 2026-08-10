@@ -86,13 +86,18 @@ This runs the Express API (port 3001) and the Vite dev server (port 5173,
 proxying `/api` to Express) together. Open http://localhost:5173.
 
 - Main page: `/`
-- Add/remove attendees: `/add-attendee`
+- Add/edit/remove attendees: `/admin.html` — a standalone static page (not
+  part of the React app), password-protected, with no link to it from the
+  main page. Bookmark it or navigate to it directly.
 
 ## 2. Deploying to Render
 
 `render.yaml` defines a Blueprint: one free Postgres database + one free Web
-Service that runs `npm install && npm run build` then `npm start`, serving
-both the API and the built React app from a single URL.
+Service that runs `npm install --include=dev && npm run build` then
+`npm start`, serving both the API and the built React app from a single URL.
+(The `--include=dev` matters — Render sets `NODE_ENV=production` for the
+build step too, which makes plain `npm install` skip `devDependencies` like
+`vite`, breaking the build.)
 
 1. Push this repo to GitHub (or GitLab).
 2. In the Render dashboard: **New → Blueprint**, point it at the repo.
@@ -122,8 +127,13 @@ both the API and the built React app from a single URL.
 Attendee photos live as static files in `client/public/images/` and are
 built into the deployed app (not stored in Postgres — only the file *path*
 is). To add someone with a new photo once the site is live: add the image
-file to `client/public/images/...`, commit, push, and redeploy; then use the
-Add Attendee form to add their record pointing at that path.
+file to `client/public/images/...`, commit, push, and redeploy; then use
+`/admin.html` to add their record pointing at that path.
+
+Also worth knowing: filenames are case-sensitive on Render's Linux servers
+even though they're forgiving on a Mac. Keep the `image` path in
+`people_data.json` (or entered via `/admin.html`) matching the actual
+filename's capitalization exactly.
 
 ## 3. API reference
 
@@ -131,5 +141,6 @@ Add Attendee form to add their record pointing at that path.
 |--------|-----------------------|-------------------|-------------------------------------|
 | GET    | `/api/attendees`      | none              | List all attendees                  |
 | POST   | `/api/attendees`      | `x-admin-password`| Add an attendee                     |
+| PUT    | `/api/attendees/:id`  | `x-admin-password`| Edit an attendee                    |
 | DELETE | `/api/attendees/:id`  | `x-admin-password`| Remove an attendee                  |
 | GET    | `/api/health`         | none              | Health check                        |

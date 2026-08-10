@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 export default function HeaderBanner() {
   return (
     <div className="header-banner">
@@ -9,7 +7,6 @@ export default function HeaderBanner() {
       <p className="header-subtitle">
         Celebrating our Trojan Family — browse, filter, and connect with fellow alumni below.
       </p>
-      <Link to="/add-attendee" className="manage-link">Manage Attendees</Link>
     </div>
   );
 }

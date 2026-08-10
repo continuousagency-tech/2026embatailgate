@@ -47,6 +47,41 @@ router.post('/', adminAuth, async (req, res) => {
   }
 });
 
+// PUT /api/attendees/:id — edit an existing attendee. Requires x-admin-password header.
+router.put('/:id', adminAuth, async (req, res) => {
+  const { id } = req.params;
+  const { name, profession, industry, class: className, committee, image } = req.body || {};
+
+  if (!name || !String(name).trim()) {
+    return res.status(400).json({ error: 'Name is required.' });
+  }
+
+  try {
+    const result = await pool.query(
+      `UPDATE attendees
+       SET name = $1, profession = $2, industry = $3, class = $4, committee = $5, image = $6
+       WHERE id = $7
+       RETURNING id, name, profession, industry, class, committee, image`,
+      [
+        String(name).trim(),
+        (profession && String(profession).trim()) || 'Not specified',
+        (industry && String(industry).trim()) || 'Unspecified',
+        (className && String(className).trim()) || 'Unspecified',
+        Boolean(committee),
+        (image && String(image).trim()) || 'images/profile.jpg',
+        id,
+      ]
+    );
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: 'Attendee not found.' });
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('PUT /api/attendees/:id failed:', err);
+    res.status(500).json({ error: 'Could not update attendee.' });
+  }
+});
+
 // DELETE /api/attendees/:id — remove an attendee. Requires x-admin-password header.
 router.delete('/:id', adminAuth, async (req, res) => {
   const { id } = req.params;

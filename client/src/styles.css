@@ -199,25 +199,6 @@ img {
     max-width: 560px;
     margin: 0 auto;
 }
-.manage-link {
-    display: inline-block;
-    margin-top: 1.25em;
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #FFCC00;
-    border: 1px solid #FFCC00;
-    border-radius: 3px;
-    padding: 0.5em 1em;
-    text-decoration: none;
-}
-.manage-link:hover {
-    background: #FFCC00;
-    color: #990000;
-}
-
 /* --- Filter bar --- */
 #cardsContainer {
     display: contents;
