@@ -83,6 +83,19 @@
             outline: none;
             border-color: #990000;
         }
+        .password-row {
+            display: flex;
+            align-items: stretch;
+            gap: 8px;
+        }
+        .password-row input {
+            flex: 1;
+        }
+        .password-row .btn {
+            margin-top: 0;
+            margin-left: 0;
+            white-space: nowrap;
+        }
         .checkbox-row {
             display: flex;
             align-items: center;
@@ -232,7 +245,10 @@
     <div class="panel">
         <h2><span class="step-label">Admin</span>Password</h2>
         <p>Required to add, edit, or remove attendees.</p>
-        <input type="password" id="adminPassword" placeholder="Admin password">
+        <div class="password-row">
+            <input type="password" id="adminPassword" placeholder="Admin password">
+            <button class="btn btn-secondary" id="togglePasswordBtn" type="button">Show</button>
+        </div>
     </div>
 
     <!-- Add / edit form -->
@@ -360,6 +376,12 @@
     }
 
     const adminPasswordInput = document.getElementById('adminPassword');
+    const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+    togglePasswordBtn.addEventListener('click', () => {
+        const showing = adminPasswordInput.type === 'text';
+        adminPasswordInput.type = showing ? 'password' : 'text';
+        togglePasswordBtn.textContent = showing ? 'Show' : 'Hide';
+    });
     const nameInput = document.getElementById('nameInput');
     const professionInput = document.getElementById('professionInput');
     const industryInput = document.getElementById('industryInput');
