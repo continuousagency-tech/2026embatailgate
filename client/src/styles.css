@@ -142,19 +142,25 @@ img {
 }
 .sponsor-logos {
     display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+.sponsor-row {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 2.5em;
 }
+.sponsor-row + .sponsor-row {
+    padding-top: 1.25em;
+    border-top: 1px solid #eee;
+}
 .sponsor-logo {
-    max-height: 60px;
-    max-width: 160px;
+    max-width: 220px;
     object-fit: contain;
 }
 .sponsor-placeholder {
-    width: 140px;
-    height: 60px;
     border: 2px dashed #ccc;
     border-radius: 4px;
     display: flex;
@@ -166,6 +172,19 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     text-align: center;
+}
+
+/* Row hierarchy: each tier down from the top gets a shorter logo height,
+   so the top row reads as the most prominent sponsor tier. */
+.sponsor-row--primary .sponsor-logo,
+.sponsor-row--primary .sponsor-placeholder {
+    height: 80px;
+    width: 180px;
+}
+.sponsor-row--secondary .sponsor-logo,
+.sponsor-row--secondary .sponsor-placeholder {
+    height: 55px;
+    width: 130px;
 }
 
 /* --- Header banner --- */
@@ -295,7 +314,20 @@ img {
         padding: 1em;
     }
     .sponsor-logos {
+        gap: 1em;
+    }
+    .sponsor-row {
         gap: 1.25em;
+    }
+    .sponsor-row--primary .sponsor-logo,
+    .sponsor-row--primary .sponsor-placeholder {
+        height: 60px;
+        width: 130px;
+    }
+    .sponsor-row--secondary .sponsor-logo,
+    .sponsor-row--secondary .sponsor-placeholder {
+        height: 42px;
+        width: 100px;
     }
     .header-banner {
         padding: 1.75em 1em 1.5em;
