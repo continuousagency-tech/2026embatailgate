@@ -80,7 +80,7 @@ export default function AttendeeDetailPage() {
                     rel="noopener noreferrer"
                     className="detail-linkedin-link"
                   >
-                    Connect on LinkedIn &rarr;
+                    Connect &rarr;
                   </a>
                 )}
               </div>
