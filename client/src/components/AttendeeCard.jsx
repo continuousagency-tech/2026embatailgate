@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { resolveImageSrc } from '../api.js';
 
 export default function AttendeeCard({ person, hidden }) {
   return (
@@ -10,7 +11,7 @@ export default function AttendeeCard({ person, hidden }) {
       data-profession={(person.profession || '').toLowerCase()}
       data-industry={person.industry || 'Unspecified'}
     >
-      <img src={person.image} className="image" alt={person.name} />
+      <img src={resolveImageSrc(person.image)} className="image" alt={person.name} />
       <div className="img-banner">{person.class}</div>
       {person.committee && <div className="img-banner-btm">COMMITTEE</div>}
       <div className="info">

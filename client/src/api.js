@@ -1,3 +1,16 @@
+// Attendee photos are stored as either a full Cloudinary URL or a path
+// relative to client/public (e.g. "images/42/Jane_Doe.jpeg"). Relative
+// paths only resolve correctly when the current page is served from "/"
+// (the homepage) — on a nested route like /attendee/5, the browser
+// resolves "images/..." against "/attendee/" instead, producing a 404 and
+// a broken image. Route every <img src> through this so it always
+// resolves from the site root.
+export function resolveImageSrc(image) {
+  if (!image) return '/images/profile.jpg';
+  if (/^https?:\/\//i.test(image)) return image;
+  return image.startsWith('/') ? image : `/${image}`;
+}
+
 // Thin wrapper around the /api/attendees endpoints.
 //
 // The public site only ever wants people currently marked as attending, so

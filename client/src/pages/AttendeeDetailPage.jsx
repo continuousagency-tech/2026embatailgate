@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { fetchAttendee } from '../api.js';
+import { fetchAttendee, resolveImageSrc } from '../api.js';
 
 export default function AttendeeDetailPage() {
   const { id } = useParams();
@@ -31,7 +31,7 @@ export default function AttendeeDetailPage() {
       {status === 'ready' && person && (
         <div className="detail-card">
           <div className="detail-photo-banner">
-            <img src={person.image} alt={person.name} className="detail-photo" />
+            <img src={resolveImageSrc(person.image)} alt={person.name} className="detail-photo" />
             <p className="detail-name">{person.name}</p>
             <span className="detail-class-badge">{person.class}</span>
           </div>
