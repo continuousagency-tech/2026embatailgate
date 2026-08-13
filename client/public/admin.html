@@ -323,7 +323,7 @@
     <!-- Roster -->
     <div class="panel">
         <h2><span class="step-label">Roster</span>Current attendees</h2>
-        <p>Total attendees: <span class="count-badge" id="totalCount">0</span></p>
+        <p>Total attending: <span class="count-badge" id="totalCount">0</span></p>
         <div id="rosterStatus" class="status hidden"></div>
 
         <div id="tableWrap">
@@ -536,8 +536,12 @@
         return image;
     }
 
+    function updateTotalCount() {
+        totalCount.textContent = attendees.filter(a => a.is_attending).length;
+    }
+
     function renderTable() {
-        totalCount.textContent = attendees.length;
+        updateTotalCount();
 
         if (attendees.length === 0) {
             tableWrap.innerHTML = '<p class="empty-state">No attendees yet.</p>';
@@ -779,6 +783,7 @@
             if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`);
 
             person.is_attending = body.is_attending;
+            updateTotalCount();
             showStatus(
                 rosterStatus,
                 `${person.name} marked as ${checkbox.checked ? 'attending' : 'not attending'}.`,
