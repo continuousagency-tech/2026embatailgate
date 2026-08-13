@@ -83,6 +83,22 @@
             outline: none;
             border-color: #990000;
         }
+        .link-btn {
+            display: inline-block;
+            background: none;
+            border: none;
+            padding: 0;
+            margin-top: 1em;
+            color: #990000;
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .link-btn:hover {
+            color: #7a0000;
+        }
         .password-row {
             display: flex;
             align-items: stretch;
@@ -270,17 +286,20 @@
         <input type="text" id="classInput" list="classSuggestions" placeholder="e.g. LA 42">
         <datalist id="classSuggestions"></datalist>
 
-        <label for="imageInput">Image path / URL</label>
-        <input type="text" id="imageInput" placeholder="e.g. images/42/Jane_Doe.jpeg or a Cloudinary URL">
-
-        <label for="imageFileInput">Or upload a photo</label>
+        <label for="imageFileInput">Photo</label>
         <input type="file" id="imageFileInput" accept="image/*">
         <button class="btn btn-secondary" id="uploadBtn" type="button" style="margin-top: 0.75em;">Upload Photo</button>
         <div id="uploadStatus" class="status hidden"></div>
         <div id="imagePreviewWrap" style="display:none; margin-top: 1em;">
             <img id="imagePreview" src="" alt="Preview" style="max-width: 140px; border-radius: 4px; box-shadow: 0 0 0.5em rgba(0,0,0,.2);">
         </div>
-        <p class="disabled-note">Uploading a photo saves it to Cloudinary and fills in the field above automatically &mdash; it goes live instantly, no redeploy needed. Leave both blank to use the default placeholder photo.</p>
+        <p class="disabled-note">Uploading a photo saves it to Cloudinary and goes live instantly &mdash; no redeploy needed. Leave blank to use the default placeholder photo.</p>
+
+        <button class="link-btn" id="toggleImagePathBtn" type="button">Enter an image URL manually instead</button>
+        <div id="imagePathWrap" style="display:none;">
+            <label for="imageInput">Image path / URL</label>
+            <input type="text" id="imageInput" placeholder="e.g. images/42/Jane_Doe.jpeg or a Cloudinary URL">
+        </div>
 
         <div class="checkbox-row">
             <input type="checkbox" id="committeeInput">
@@ -387,6 +406,17 @@
     const industryInput = document.getElementById('industryInput');
     const classInput = document.getElementById('classInput');
     const imageInput = document.getElementById('imageInput');
+    const imagePathWrap = document.getElementById('imagePathWrap');
+    const toggleImagePathBtn = document.getElementById('toggleImagePathBtn');
+    toggleImagePathBtn.addEventListener('click', () => {
+        imagePathWrap.style.display = 'block';
+        toggleImagePathBtn.style.display = 'none';
+        imageInput.focus();
+    });
+    function hideImagePathField() {
+        imagePathWrap.style.display = 'none';
+        toggleImagePathBtn.style.display = 'inline-block';
+    }
     const imageFileInput = document.getElementById('imageFileInput');
     const uploadBtn = document.getElementById('uploadBtn');
     const uploadStatus = document.getElementById('uploadStatus');
@@ -457,6 +487,7 @@
         imageFileInput.value = '';
         hideStatus(uploadStatus);
         showPreview(null);
+        hideImagePathField();
         saveBtn.textContent = 'Add Attendee';
         formModeLabel.textContent = 'Add';
         formModeTitle.textContent = 'New attendee';
@@ -479,6 +510,7 @@
         imageFileInput.value = '';
         hideStatus(uploadStatus);
         showPreview(person.image ? resolveImageUrl(person.image) : null);
+        hideImagePathField();
         saveBtn.textContent = 'Save Changes';
         formModeLabel.textContent = 'Edit';
         formModeTitle.textContent = person.name;
