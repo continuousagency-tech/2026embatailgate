@@ -475,11 +475,14 @@ img {
 }
 .detail-linkedin-link {
     display: inline-block;
-    color: #990000;
+    background: #990000;
+    color: #fff;
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 30px;
 }
 .detail-linkedin-link:hover {
-    text-decoration: underline;
+    background: #7a0000;
 }
