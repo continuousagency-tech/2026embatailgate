@@ -461,6 +461,18 @@ img {
     line-height: 1.65;
     margin: 0 0 1.25em;
 }
+.detail-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5em;
+    margin: 0 0 1.25em;
+}
+.detail-gallery-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 4px;
+}
 .detail-linkedin-link {
     display: inline-block;
     color: #990000;

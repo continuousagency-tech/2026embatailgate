@@ -5,7 +5,16 @@ const adminAuth = require('../middleware/adminAuth');
 const router = express.Router();
 
 const SELECT_FIELDS =
-  'id, name, profession, industry, class, committee, image, created_at, bio, linkedin_url, fun_fact, is_attending';
+  'id, name, profession, industry, class, committee, image, created_at, bio, linkedin_url, fun_fact, is_attending, photos';
+
+// `photos` is up to 3 extra Cloudinary URLs for the detail-page gallery.
+// Silently drops anything that isn't a non-empty string rather than
+// erroring, since this is optional and admin.html only ever sends what it
+// uploaded — no need to make editors fight a validation error over it.
+function normalizePhotos(input) {
+  if (!Array.isArray(input)) return [];
+  return input.filter((url) => typeof url === 'string' && url.trim()).map((url) => url.trim()).slice(0, 3);
+}
 
 // GET /api/attendees — full roster, original insertion order.
 // Filtering/sorting stays client-side (same behavior as the original site).
@@ -54,7 +63,7 @@ router.get('/:id', async (req, res) => {
 
 // POST /api/attendees — add a new attendee. Requires x-admin-password header.
 router.post('/', adminAuth, async (req, res) => {
-  const { name, profession, industry, class: className, committee, image, bio, linkedin_url, fun_fact } =
+  const { name, profession, industry, class: className, committee, image, bio, linkedin_url, fun_fact, photos } =
     req.body || {};
 
   if (!name || !String(name).trim()) {
@@ -63,8 +72,8 @@ router.post('/', adminAuth, async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO attendees (name, profession, industry, class, committee, image, bio, linkedin_url, fun_fact)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      `INSERT INTO attendees (name, profession, industry, class, committee, image, bio, linkedin_url, fun_fact, photos)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10::jsonb)
        RETURNING ${SELECT_FIELDS}`,
       [
         String(name).trim(),
@@ -76,6 +85,7 @@ router.post('/', adminAuth, async (req, res) => {
         (bio && String(bio).trim()) || null,
         (linkedin_url && String(linkedin_url).trim()) || null,
         (fun_fact && String(fun_fact).trim()) || null,
+        JSON.stringify(normalizePhotos(photos)),
       ]
     );
     res.status(201).json(result.rows[0]);
@@ -88,7 +98,7 @@ router.post('/', adminAuth, async (req, res) => {
 // PUT /api/attendees/:id — edit an existing attendee. Requires x-admin-password header.
 router.put('/:id', adminAuth, async (req, res) => {
   const { id } = req.params;
-  const { name, profession, industry, class: className, committee, image, bio, linkedin_url, fun_fact } =
+  const { name, profession, industry, class: className, committee, image, bio, linkedin_url, fun_fact, photos } =
     req.body || {};
 
   if (!name || !String(name).trim()) {
@@ -105,8 +115,9 @@ router.put('/:id', adminAuth, async (req, res) => {
     const result = await pool.query(
       `UPDATE attendees
        SET name = $1, profession = $2, industry = $3, class = $4, committee = $5, image = $6,
-           bio = $7, linkedin_url = $8, fun_fact = $9, is_attending = COALESCE($10, is_attending)
-       WHERE id = $11
+           bio = $7, linkedin_url = $8, fun_fact = $9, is_attending = COALESCE($10, is_attending),
+           photos = $11::jsonb
+       WHERE id = $12
        RETURNING ${SELECT_FIELDS}`,
       [
         String(name).trim(),
@@ -119,6 +130,7 @@ router.put('/:id', adminAuth, async (req, res) => {
         (linkedin_url && String(linkedin_url).trim()) || null,
         (fun_fact && String(fun_fact).trim()) || null,
         isAttending,
+        JSON.stringify(normalizePhotos(photos)),
         id,
       ]
     );

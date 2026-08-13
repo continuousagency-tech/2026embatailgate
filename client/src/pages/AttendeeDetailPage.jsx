@@ -41,7 +41,7 @@ export default function AttendeeDetailPage() {
             <p className="detail-industry">{person.industry || 'Unspecified'}</p>
             {person.committee && <span className="detail-committee-badge">Committee member</span>}
 
-            {(person.bio || person.fun_fact || person.linkedin_url) && (
+            {(person.bio || person.fun_fact || person.linkedin_url || person.photos?.length > 0) && (
               <div className="detail-extra">
                 {person.bio && (
                   <>
@@ -54,6 +54,22 @@ export default function AttendeeDetailPage() {
                   <>
                     <p className="detail-label">Fun fact</p>
                     <p className="detail-text">{person.fun_fact}</p>
+                  </>
+                )}
+
+                {person.photos?.length > 0 && (
+                  <>
+                    <p className="detail-label">Photos</p>
+                    <div className="detail-gallery">
+                      {person.photos.map((photo, i) => (
+                        <img
+                          key={i}
+                          src={resolveImageSrc(photo)}
+                          alt={`${person.name} photo ${i + 1}`}
+                          className="detail-gallery-photo"
+                        />
+                      ))}
+                    </div>
                   </>
                 )}
 

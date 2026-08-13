@@ -26,5 +26,10 @@ ALTER TABLE attendees ADD COLUMN IF NOT EXISTS fun_fact TEXT;
 -- until someone flips it off.
 ALTER TABLE attendees ADD COLUMN IF NOT EXISTS is_attending BOOLEAN NOT NULL DEFAULT true;
 
+-- Added later for the "additional photos" gallery on the detail page — up
+-- to 3 extra Cloudinary URLs per attendee, separate from the single
+-- `image` used on cards/roster. Stored as a JSON array of URL strings.
+ALTER TABLE attendees ADD COLUMN IF NOT EXISTS photos JSONB NOT NULL DEFAULT '[]'::jsonb;
+
 CREATE INDEX IF NOT EXISTS idx_attendees_class ON attendees (class);
 CREATE INDEX IF NOT EXISTS idx_attendees_industry ON attendees (industry);

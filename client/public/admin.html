@@ -83,6 +83,46 @@
             outline: none;
             border-color: #990000;
         }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 0.5em;
+        }
+        .gallery-slot {
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+        }
+        .gallery-slot input[type="file"] {
+            width: 100%;
+            font-size: 12px;
+        }
+        .gallery-upload-btn {
+            margin-top: 8px;
+            padding: 6px 10px;
+            font-size: 12px;
+            width: 100%;
+        }
+        .gallery-preview-wrap {
+            margin-top: 8px;
+        }
+        .gallery-preview {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .gallery-remove-btn {
+            display: block;
+            margin: 6px auto 0;
+            font-size: 12px;
+        }
+        .gallery-status {
+            margin-top: 6px;
+            font-size: 0.75rem;
+        }
         .link-btn {
             display: inline-block;
             background: none;
@@ -312,6 +352,38 @@
         <label for="funFactInput">Fun fact</label>
         <input type="text" id="funFactInput" placeholder="A quick, lighter detail — one or two sentences">
 
+        <label>Additional Photos (optional, up to 3)</label>
+        <div class="gallery-grid">
+            <div class="gallery-slot" data-slot="0">
+                <input type="file" class="gallery-file-input" accept="image/*" data-slot="0">
+                <button class="btn btn-secondary gallery-upload-btn" type="button" data-slot="0">Upload</button>
+                <div class="gallery-preview-wrap" data-slot="0" style="display:none;">
+                    <img class="gallery-preview" data-slot="0" src="" alt="Photo 1 preview">
+                    <button class="link-btn gallery-remove-btn" type="button" data-slot="0">Remove</button>
+                </div>
+                <div class="status hidden gallery-status" data-slot="0"></div>
+            </div>
+            <div class="gallery-slot" data-slot="1">
+                <input type="file" class="gallery-file-input" accept="image/*" data-slot="1">
+                <button class="btn btn-secondary gallery-upload-btn" type="button" data-slot="1">Upload</button>
+                <div class="gallery-preview-wrap" data-slot="1" style="display:none;">
+                    <img class="gallery-preview" data-slot="1" src="" alt="Photo 2 preview">
+                    <button class="link-btn gallery-remove-btn" type="button" data-slot="1">Remove</button>
+                </div>
+                <div class="status hidden gallery-status" data-slot="1"></div>
+            </div>
+            <div class="gallery-slot" data-slot="2">
+                <input type="file" class="gallery-file-input" accept="image/*" data-slot="2">
+                <button class="btn btn-secondary gallery-upload-btn" type="button" data-slot="2">Upload</button>
+                <div class="gallery-preview-wrap" data-slot="2" style="display:none;">
+                    <img class="gallery-preview" data-slot="2" src="" alt="Photo 3 preview">
+                    <button class="link-btn gallery-remove-btn" type="button" data-slot="2">Remove</button>
+                </div>
+                <div class="status hidden gallery-status" data-slot="2"></div>
+            </div>
+        </div>
+        <p class="disabled-note">Shown as a small gallery on this person's detail page — separate from their main profile photo above.</p>
+
         <label for="linkedinInput">LinkedIn URL</label>
         <input type="text" id="linkedinInput" placeholder="https://linkedin.com/in/...">
 
@@ -426,6 +498,90 @@
     const bioInput = document.getElementById('bioInput');
     const funFactInput = document.getElementById('funFactInput');
     const linkedinInput = document.getElementById('linkedinInput');
+
+    // Additional photos gallery (up to 3 slots), each independently
+    // uploaded to Cloudinary the same way the main photo is.
+    const galleryPhotos = [null, null, null];
+    const gallerySlots = [0, 1, 2].map((i) => ({
+        fileInput: document.querySelector(`.gallery-file-input[data-slot="${i}"]`),
+        uploadBtn: document.querySelector(`.gallery-upload-btn[data-slot="${i}"]`),
+        previewWrap: document.querySelector(`.gallery-preview-wrap[data-slot="${i}"]`),
+        preview: document.querySelector(`.gallery-preview[data-slot="${i}"]`),
+        removeBtn: document.querySelector(`.gallery-remove-btn[data-slot="${i}"]`),
+        status: document.querySelector(`.gallery-status[data-slot="${i}"]`),
+    }));
+
+    function showGalleryPreview(i, url) {
+        const slot = gallerySlots[i];
+        if (!url) {
+            slot.previewWrap.style.display = 'none';
+            slot.preview.src = '';
+            return;
+        }
+        slot.preview.src = url;
+        slot.previewWrap.style.display = 'block';
+    }
+
+    function resetGalleryPhotos() {
+        gallerySlots.forEach((slot, i) => {
+            galleryPhotos[i] = null;
+            slot.fileInput.value = '';
+            hideStatus(slot.status);
+            showGalleryPreview(i, null);
+        });
+    }
+
+    function setGalleryPhotos(photos) {
+        resetGalleryPhotos();
+        (photos || []).slice(0, 3).forEach((url, i) => {
+            galleryPhotos[i] = url;
+            showGalleryPreview(i, url);
+        });
+    }
+
+    gallerySlots.forEach((slot, i) => {
+        slot.uploadBtn.addEventListener('click', async () => {
+            const file = slot.fileInput.files[0];
+            if (!file) {
+                showStatus(slot.status, 'Choose a file first.', 'error');
+                return;
+            }
+            const password = getAdminPassword();
+            if (!password) return;
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            slot.uploadBtn.disabled = true;
+            slot.uploadBtn.textContent = 'Uploading…';
+            try {
+                const res = await fetch('/api/upload-image', {
+                    method: 'POST',
+                    headers: { 'x-admin-password': password },
+                    body: formData,
+                });
+                const body = await res.json().catch(() => ({}));
+                if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`);
+
+                galleryPhotos[i] = body.url;
+                showGalleryPreview(i, body.url);
+                showStatus(slot.status, 'Uploaded.', 'success');
+            } catch (err) {
+                showStatus(slot.status, err.message || 'Upload failed.', 'error');
+            } finally {
+                slot.uploadBtn.disabled = false;
+                slot.uploadBtn.textContent = 'Upload';
+            }
+        });
+
+        slot.removeBtn.addEventListener('click', () => {
+            galleryPhotos[i] = null;
+            slot.fileInput.value = '';
+            hideStatus(slot.status);
+            showGalleryPreview(i, null);
+        });
+    });
+
     const saveBtn = document.getElementById('saveBtn');
     const cancelEditBtn = document.getElementById('cancelEditBtn');
     const formStatus = document.getElementById('formStatus');
@@ -488,6 +644,7 @@
         hideStatus(uploadStatus);
         showPreview(null);
         hideImagePathField();
+        resetGalleryPhotos();
         saveBtn.textContent = 'Add Attendee';
         formModeLabel.textContent = 'Add';
         formModeTitle.textContent = 'New attendee';
@@ -511,6 +668,7 @@
         hideStatus(uploadStatus);
         showPreview(person.image ? resolveImageUrl(person.image) : null);
         hideImagePathField();
+        setGalleryPhotos(person.photos);
         saveBtn.textContent = 'Save Changes';
         formModeLabel.textContent = 'Edit';
         formModeTitle.textContent = person.name;
@@ -674,6 +832,7 @@
             bio: bioInput.value.trim() || null,
             fun_fact: funFactInput.value.trim() || null,
             linkedin_url: linkedinInput.value.trim() || null,
+            photos: galleryPhotos.filter(Boolean),
         };
 
         const isEdit = editingId !== null;
