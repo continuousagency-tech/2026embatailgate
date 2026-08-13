@@ -289,6 +289,7 @@
     <div class="panel">
         <h2><span class="step-label">Roster</span>Current attendees</h2>
         <p>Total attendees: <span class="count-badge" id="totalCount">0</span></p>
+        <div id="rosterStatus" class="status hidden"></div>
 
         <div id="tableWrap">
             <p class="empty-state">Loading&hellip;</p>
@@ -381,6 +382,7 @@
     const editingBadge = document.getElementById('editingBadge');
     const tableWrap = document.getElementById('tableWrap');
     const totalCount = document.getElementById('totalCount');
+    const rosterStatus = document.getElementById('rosterStatus');
     const classSuggestions = document.getElementById('classSuggestions');
     const industrySuggestions = document.getElementById('industrySuggestions');
 
@@ -701,12 +703,14 @@
     }
 
     async function handleToggleAttending(person, checkbox) {
-        const password = getAdminPassword();
+        const password = adminPasswordInput.value;
         if (!password) {
             checkbox.checked = !checkbox.checked; // revert the click
+            showStatus(rosterStatus, 'Enter the admin password above first.', 'error');
             return;
         }
 
+        hideStatus(rosterStatus);
         checkbox.disabled = true;
         try {
             const res = await fetch(`${API_BASE}/${person.id}/attending`, {
@@ -721,9 +725,14 @@
             if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`);
 
             person.is_attending = body.is_attending;
+            showStatus(
+                rosterStatus,
+                `${person.name} marked as ${checkbox.checked ? 'attending' : 'not attending'}.`,
+                'success'
+            );
         } catch (err) {
             checkbox.checked = !checkbox.checked; // revert on failure
-            showStatus(formStatus, err.message || 'Could not update attendance.', 'error');
+            showStatus(rosterStatus, err.message || 'Could not update attendance.', 'error');
         } finally {
             checkbox.disabled = false;
         }
