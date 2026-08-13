@@ -4,6 +4,9 @@ React + Express + Postgres rebuild of the original static site. One Express
 web service serves both the JSON API and the built React app; Postgres holds
 the attendee roster (originally `people_data.json`).
 
+This is a yearly event — see [NEXT_YEAR_SETUP.md](./NEXT_YEAR_SETUP.md) for
+the checklist to duplicate this into a fresh site for the next tailgate.
+
 ```
 usc-emba-tailgate/
 ├── client/          React app (Vite)

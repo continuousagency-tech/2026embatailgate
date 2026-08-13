@@ -6,6 +6,12 @@ export async function fetchAttendees() {
   return res.json();
 }
 
+export async function fetchAttendee(id) {
+  const res = await fetch(`/api/attendees/${id}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
 export async function addAttendee(attendee, adminPassword) {
   const res = await fetch('/api/attendees', {
     method: 'POST',

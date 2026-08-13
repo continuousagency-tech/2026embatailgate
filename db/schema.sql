@@ -13,5 +13,18 @@ CREATE TABLE IF NOT EXISTS attendees (
     created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+-- Added later for the attendee detail page. Written as ADD COLUMN IF NOT
+-- EXISTS (rather than folded into the CREATE TABLE above) so re-running
+-- this file against an existing, already-populated database is safe and
+-- doesn't touch any existing rows.
+ALTER TABLE attendees ADD COLUMN IF NOT EXISTS bio TEXT;
+ALTER TABLE attendees ADD COLUMN IF NOT EXISTS linkedin_url TEXT;
+ALTER TABLE attendees ADD COLUMN IF NOT EXISTS fun_fact TEXT;
+
+-- Added later for the "is this person still coming" toggle in admin.html.
+-- Defaults to true so everyone already on the roster is assumed attending
+-- until someone flips it off.
+ALTER TABLE attendees ADD COLUMN IF NOT EXISTS is_attending BOOLEAN NOT NULL DEFAULT true;
+
 CREATE INDEX IF NOT EXISTS idx_attendees_class ON attendees (class);
 CREATE INDEX IF NOT EXISTS idx_attendees_industry ON attendees (industry);

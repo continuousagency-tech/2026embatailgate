@@ -1,6 +1,9 @@
+import { Link } from 'react-router-dom';
+
 export default function AttendeeCard({ person, hidden }) {
   return (
-    <div
+    <Link
+      to={`/attendee/${person.id}`}
       className="portfolio-card"
       hidden={hidden}
       data-class={person.class}
@@ -14,6 +17,6 @@ export default function AttendeeCard({ person, hidden }) {
         <h3 className="portfolio-card-title">{person.name}</h3>
         <p className="portfolio-card-p">{person.profession}</p>
       </div>
-    </div>
+    </Link>
   );
 }

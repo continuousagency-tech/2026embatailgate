@@ -63,7 +63,8 @@
             margin: 1em 0 0.3em;
         }
         input[type="text"],
-        input[type="password"] {
+        input[type="password"],
+        textarea {
             width: 100%;
             box-sizing: border-box;
             padding: 8px 10px;
@@ -72,8 +73,13 @@
             font-family: 'Raleway', sans-serif;
             font-size: 14px;
         }
+        textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
         input[type="text"]:focus,
-        input[type="password"]:focus {
+        input[type="password"]:focus,
+        textarea:focus {
             outline: none;
             border-color: #990000;
         }
@@ -265,6 +271,15 @@
             <label for="committeeInput">On the committee</label>
         </div>
 
+        <label for="bioInput">Bio</label>
+        <textarea id="bioInput" placeholder="A short paragraph about this person"></textarea>
+
+        <label for="funFactInput">Fun fact</label>
+        <input type="text" id="funFactInput" placeholder="A quick, lighter detail — one or two sentences">
+
+        <label for="linkedinInput">LinkedIn URL</label>
+        <input type="text" id="linkedinInput" placeholder="https://linkedin.com/in/...">
+
         <button class="btn btn-primary" id="saveBtn" type="button">Add Attendee</button>
         <button class="btn btn-secondary" id="cancelEditBtn" type="button" style="display:none;">Cancel Edit</button>
         <div id="formStatus" class="status hidden"></div>
@@ -290,6 +305,7 @@
     let sortState = { column: 'class', direction: 'asc' }; // default: ordered by Class
 
     const COLUMNS = [
+        { key: 'is_attending', label: 'Attending' },
         { key: 'name', label: 'Name' },
         { key: 'class', label: 'Class' },
         { key: 'profession', label: 'Title/Company' },
@@ -318,6 +334,8 @@
             result = aPrefix.localeCompare(bPrefix) || (aNum - bNum);
         } else if (column === 'committee') {
             result = Number(Boolean(a.committee)) - Number(Boolean(b.committee));
+        } else if (column === 'is_attending') {
+            result = Number(Boolean(a.is_attending)) - Number(Boolean(b.is_attending));
         } else if (column === 'created_at') {
             result = new Date(a.created_at || 0) - new Date(b.created_at || 0);
         } else {
@@ -352,6 +370,9 @@
     const imagePreviewWrap = document.getElementById('imagePreviewWrap');
     const imagePreview = document.getElementById('imagePreview');
     const committeeInput = document.getElementById('committeeInput');
+    const bioInput = document.getElementById('bioInput');
+    const funFactInput = document.getElementById('funFactInput');
+    const linkedinInput = document.getElementById('linkedinInput');
     const saveBtn = document.getElementById('saveBtn');
     const cancelEditBtn = document.getElementById('cancelEditBtn');
     const formStatus = document.getElementById('formStatus');
@@ -406,6 +427,9 @@
         classInput.value = '';
         imageInput.value = '';
         committeeInput.checked = false;
+        bioInput.value = '';
+        funFactInput.value = '';
+        linkedinInput.value = '';
         imageFileInput.value = '';
         hideStatus(uploadStatus);
         showPreview(null);
@@ -425,6 +449,9 @@
         classInput.value = person.class || '';
         imageInput.value = person.image || '';
         committeeInput.checked = Boolean(person.committee);
+        bioInput.value = person.bio || '';
+        funFactInput.value = person.fun_fact || '';
+        linkedinInput.value = person.linkedin_url || '';
         imageFileInput.value = '';
         hideStatus(uploadStatus);
         showPreview(person.image ? resolveImageUrl(person.image) : null);
@@ -490,6 +517,15 @@
 
         getSortedAttendees().forEach(person => {
             const row = document.createElement('tr');
+
+            const attendingTd = document.createElement('td');
+            const attendingCheckbox = document.createElement('input');
+            attendingCheckbox.type = 'checkbox';
+            attendingCheckbox.checked = Boolean(person.is_attending);
+            attendingCheckbox.setAttribute('aria-label', `${person.name} is attending`);
+            attendingCheckbox.addEventListener('change', () => handleToggleAttending(person, attendingCheckbox));
+            attendingTd.appendChild(attendingCheckbox);
+            row.appendChild(attendingTd);
 
             const nameTd = document.createElement('td');
             nameTd.textContent = person.name;
@@ -575,6 +611,9 @@
             class: classInput.value.trim() || 'Unspecified',
             committee: committeeInput.checked,
             image: imageInput.value.trim() || 'images/profile.jpg',
+            bio: bioInput.value.trim() || null,
+            fun_fact: funFactInput.value.trim() || null,
+            linkedin_url: linkedinInput.value.trim() || null,
         };
 
         const isEdit = editingId !== null;
@@ -658,6 +697,35 @@
             await loadAttendees();
         } catch (err) {
             showStatus(formStatus, err.message || 'Could not remove attendee.', 'error');
+        }
+    }
+
+    async function handleToggleAttending(person, checkbox) {
+        const password = getAdminPassword();
+        if (!password) {
+            checkbox.checked = !checkbox.checked; // revert the click
+            return;
+        }
+
+        checkbox.disabled = true;
+        try {
+            const res = await fetch(`${API_BASE}/${person.id}/attending`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-admin-password': password,
+                },
+                body: JSON.stringify({ is_attending: checkbox.checked }),
+            });
+            const body = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`);
+
+            person.is_attending = body.is_attending;
+        } catch (err) {
+            checkbox.checked = !checkbox.checked; // revert on failure
+            showStatus(formStatus, err.message || 'Could not update attendance.', 'error');
+        } finally {
+            checkbox.disabled = false;
         }
     }
 
