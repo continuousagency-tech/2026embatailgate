@@ -1,13 +1,18 @@
 // Thin wrapper around the /api/attendees endpoints.
+//
+// The public site only ever wants people currently marked as attending, so
+// these pass ?attending=true. (admin.html is a separate static page and
+// talks to the API directly without this param, since it needs to see
+// everyone to let someone be re-checked.)
 
 export async function fetchAttendees() {
-  const res = await fetch('/api/attendees');
+  const res = await fetch('/api/attendees?attending=true');
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
 
 export async function fetchAttendee(id) {
-  const res = await fetch(`/api/attendees/${id}`);
+  const res = await fetch(`/api/attendees/${id}?attending=true`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }

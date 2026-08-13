@@ -9,10 +9,17 @@ const SELECT_FIELDS =
 
 // GET /api/attendees — full roster, original insertion order.
 // Filtering/sorting stays client-side (same behavior as the original site).
+// The public site requests ?attending=true so people marked as not
+// attending drop off the roster; admin.html omits the param so it always
+// sees everyone (it needs the full list to let someone be re-checked).
 router.get('/', async (req, res) => {
+  const attendingOnly = req.query.attending === 'true';
+
   try {
     const result = await pool.query(
-      `SELECT ${SELECT_FIELDS} FROM attendees ORDER BY id ASC`
+      `SELECT ${SELECT_FIELDS} FROM attendees
+       ${attendingOnly ? 'WHERE is_attending = true' : ''}
+       ORDER BY id ASC`
     );
     res.json(result.rows);
   } catch (err) {
@@ -22,12 +29,17 @@ router.get('/', async (req, res) => {
 });
 
 // GET /api/attendees/:id — a single attendee, for the detail page.
+// Same ?attending=true convention as above: the public detail page passes
+// it so a direct link to someone who's since unchecked their attendance
+// 404s instead of still rendering.
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
+  const attendingOnly = req.query.attending === 'true';
 
   try {
     const result = await pool.query(
-      `SELECT ${SELECT_FIELDS} FROM attendees WHERE id = $1`,
+      `SELECT ${SELECT_FIELDS} FROM attendees
+       WHERE id = $1 ${attendingOnly ? 'AND is_attending = true' : ''}`,
       [id]
     );
     if (result.rowCount === 0) {
