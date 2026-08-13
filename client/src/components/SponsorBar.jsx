@@ -16,7 +16,12 @@ const SPONSOR_TIERS = [
   },
   {
     key: 'secondary',
-    logos: [{ placeholder: true }, { placeholder: true }, { placeholder: true }],
+    logos: [
+      { placeholder: true },
+      { placeholder: true },
+      { placeholder: true },
+      { placeholder: true },
+    ],
   },
 ];
 
