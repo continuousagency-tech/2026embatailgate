@@ -10,17 +10,20 @@ const SPONSOR_TIERS = [
   {
     key: 'primary',
     logos: [
-      { name: 'Abundant Tax Strategies', src: 'images/sponsors/abundant.jpg' },
-      { placeholder: true },
+      { name: 'AllCare Provider', src: 'images/sponsors/allcare.jpeg' },
     ],
   },
   {
     key: 'secondary',
     logos: [
-      { placeholder: true },
-      { placeholder: true },
-      { placeholder: true },
-      { placeholder: true },
+      { name: 'Abundant Tax Strategies', src: 'images/sponsors/abundant.jpg' },
+    ],
+  },
+  {
+    key: 'tertiary',
+    logos: [
+      { name: 'Zipure', src: 'images/sponsors/zipure.png' },
+      { name: 'Mira — Digital Strategy & Creative Agency', src: 'images/sponsors/mira-horizontal.png' },
     ],
   },
 ];
